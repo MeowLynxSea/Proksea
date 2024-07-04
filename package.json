@@ -1,0 +1,20 @@
+{
+    "name": "mc-srv",
+    "version": "1.0.0",
+    "description": "A demo server for minecraft written in JS",
+    "main": "app.js",
+    "scripts": {
+        "test": "node app.js play.molean.com 1.16.3"
+    },
+    "keywords": [
+        "mc",
+        "js",
+        "server"
+    ],
+    "author": "MewnLynxSea",
+    "license": "ISC",
+    "dependencies": {
+        "minecraft-protocol": "^1.47.0",
+        "prismarine-chunk": "^1.35.0"
+    }
+}
