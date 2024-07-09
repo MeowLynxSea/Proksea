@@ -1,0 +1,35 @@
+{
+    "serverList": {
+        "default": {
+            "host": "localhost",
+            "port": 0,
+            "isDefault": true,
+            "isFallback": true
+        },
+        "cloud": {
+            "host": "cloudegg.cloud",
+            "port": 25565
+        },
+        "hms": {
+            "host": "hmsj.online",
+            "port": 25565
+        },
+        "error": {
+            "host": "this_server_not_exist",
+            "port": 25565
+        }
+    },
+    "proxyOptions": {
+        "port": 25565,
+        "version": "1.16.3",
+        "online-mode": false,
+        "motd": "Minecraft Proxy in NodeJS"
+    },
+    "localServerOptions": {
+        "online-mode": false,
+        "encryption": true,
+        "host": "0.0.0.0",
+        "port": 25566,
+        "version": false
+    }
+}
