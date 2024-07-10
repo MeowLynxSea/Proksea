@@ -4,7 +4,7 @@ const helpText = "\
 /proksea connect <server> - 连接到指定服务器\n\n\
 ======================\n"
 
-function handleCommands(client, proxy, localServerOptions, proxyOptions) {
+function onConnection(client, proxy, localServerOptions, proxyOptions) {
     client.on('chat', (data, metadata) => {
         let split = data.message.split(' ')
         if (split[0] === '/proksea') {
@@ -39,4 +39,6 @@ function handleCommands(client, proxy, localServerOptions, proxyOptions) {
     })
 }
 
-module.exports = handleCommands
+module.exports = {
+    onConnection: onConnection
+}
