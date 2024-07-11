@@ -4,6 +4,20 @@ const helpText = "\
 /proksea connect <server> - 连接到指定服务器\n\n\
 ======================\n"
 
+function onEnable(proxyServerOptions, serverList, proxyOptions) {
+    console.info(`
+  ____               _                      
+ |  _ \\  _ __  ___  | | __ ___   ___   __ _ 
+ | |_) || '__|/ _ \\ | |/ // __| / _ \\ / _\` |
+ |  __/ | |  | (_) ||   < \\__ \\|  __/| (_| |
+ |_|    |_|   \\___/ |_|\\_\\|___/ \\___| \\__,_|
+
+ Proksea Proxy Server ver 0.1
+ By Meow_LynxSea
+ https://meowdream.cn
+                                            `)
+}
+
 function onConnection(client, proxy, localServerOptions, proxyOptions) {
     client.on('chat', (data, metadata) => {
         let split = data.message.split(' ')
@@ -40,5 +54,6 @@ function onConnection(client, proxy, localServerOptions, proxyOptions) {
 }
 
 module.exports = {
+    onEnable: onEnable,
     onConnection: onConnection
 }

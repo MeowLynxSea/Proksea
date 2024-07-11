@@ -19,11 +19,14 @@
             "port": 25565
         }
     },
-    "proxyOptions": {
+    "proxyServerOptions": {
         "port": 25565,
         "version": "1.16.3",
         "online-mode": false,
         "motd": "Minecraft Proxy in NodeJS"
+    },
+    "proxyOptions": {
+        "enablePlugins": true
     },
     "localServerOptions": {
         "online-mode": false,

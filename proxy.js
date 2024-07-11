@@ -4,25 +4,36 @@ const path = require('path');
 module.exports = function(config) {
     const McProxy = require('basic-minecraft-proxy')
 
-    let proxyServerOptions = config.proxyOptions
+    let proxyServerOptions = config.proxyServerOptions
     let serverList = config.serverList
-    let proxyOptions = {}
+    let proxyOptions = config.proxyOptions
     let proxyPlugins = []
 
     //加载插件
     const pluginsDir = path.resolve(__dirname, './plugins');
     const files = fs.readdirSync(pluginsDir);
-    files.forEach(file => {
-        if (path.extname(file) === '.js') {
-            const filePath = path.join(pluginsDir, file);
-            console.log("Found plugin: [" + file + "]")
-            proxyPlugins.push(require(filePath))
+    if (proxyOptions.enablePlugins) {
+        console.info("Loading plugins...")
+        files.forEach(file => {
+            if (path.extname(file) === '.js') {
+                const filePath = path.join(pluginsDir, file);
+                console.log("Found plugin: [" + file + "]")
+                proxyPlugins.push(require(filePath))
+            }
+        });
+    } else {
+        console.warn("Plugins are disabled.")
+    }
+
+    if (proxyOptions.enablePlugins) proxyPlugins.forEach((plugin) => {
+        if ('onEnable' in plugin) {
+            plugin.onEnable(proxyServerOptions, serverList, proxyOptions)
         }
-    });
+    })
+
+    console.info("All plugins have been loaded. Total: " + proxyPlugins.length)
 
     let proxy = McProxy.createProxy(proxyServerOptions, serverList, proxyOptions, proxyPlugins);
-
-
 
     proxy.on('error', (err) => {
         console.error("A error occured while running proxy: " + err)
