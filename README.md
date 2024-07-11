@@ -2,4 +2,4 @@
 
 Proksea is a Minecraft Proxy written in JavaScript.
 
-**Very Early Stage**
+**Still in Very Early Stage**
